@@ -1,0 +1,41 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+ENV/
+.venv/
+*.venv
+
+# Django-specific files
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+
+# IDE and Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Test and Coverage Files
+htmlcov/
+.coverage
+.coverage.*
+
+# Logs
+*.log
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# macOS and Windows system files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidding Room</title>
+    <link rel="stylesheet" href="{% static 'css/biddingPage.css' %}">  
+    <script src="https://kit.fontawesome.com/b6ecc94894.js" crossorigin="anonymous"></script> 
+    <script src="{% static 'js/Register.js' %}"></script>  
+    <script src="{% static 'js/biddingPage.js' %}"></script>  
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/heebo" type="text/css"/> 
+</head> 
+
+<body>
+    <section class="wave">  
+    <div class="header"> 
+        <img  class="logo" onclick="window.location.href='{% url 'home' %}'" src="{% static 'files/logo (4).png' %}" alt="logo">
+        <p onclick="window.location.href='{% url 'home' %}'">Properties Settlement</p> 
+    </div>
+
+    <div id="preloader">
+        <img src="{% static 'files/preloader.gif' %}" alt="Loading...">
+    </div>
+
+    {% comment %} <section method="post" action="{% url 'submit_bids' %}"> {% csrf_token %} {% endcomment %}
+    <form method="post" action="{% url 'auction' bidding_url=participant.IDParticipants %}"> {% csrf_token %}
+
+        <div class="content">
+            <h2>Place your Bid</h2>  
+
+            <div id="propertyNames">
+
+                {% for property in properties %}
+                    <div class="property-container">
+                        <div class="property-box"> 
+
+                            <span class="count">{{ forloop.counter }}</span>
+                            <h3 class="propHead">{{ property.property_name }}</h3>
+                            <p>Minimum Bid: {% if property.min_bid %}${{ property.min_bid }}{% else %}No minimum{% endif %}</p>                            
+                            <input type="hidden" name="item_id" value="{{ item.id }}">
+                            <input type="number" class="bid-input"step="0.01" name="bid_amount_{{ property.id }}" placeholder="Enter Your Bid" required>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <script>
+            {% if messages %}
+                var errorMessage = "{% for message in messages %}{{ message }}\n{% endfor %}";
+                alert(errorMessage);
+            {% endif %}
+        </script>
+
+        <button class= 'submitBtn' type="submit">Submit</button> 
+    </section>
+    </form> 
+
+
+</body>
+
+</html>
