@@ -1,4 +1,4 @@
-# **Properties Settlement System Using the Sealed Bid Method**
+# **Properties Settlement**
 
 ![Preview](base/static/files/properties-settlement.gif)
 
