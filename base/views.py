@@ -160,7 +160,7 @@ def auction(request, bidding_url):
                     value_items1.append(currentParticipant.item10)
                 value_items.append(value_items1) # an array that will store in an array
             else:
-                success = 'You successfully placed  your bid. Please wait for the result in your email, check it regularly.'
+                success = 'You successfully placed  your bid. Please wait for the result in your email.'
                 return render(request, 'successMsg.html', {'success_message': success})
                 
 
